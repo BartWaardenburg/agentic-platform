@@ -177,7 +177,7 @@ describe("Email Agent Tests", () => {
     const keywordMetric = new KeywordCoverageMetric();
     const keywordResult = await keywordMetric.measure(
       output,
-      formalKeywords.join(", ")
+      formalKeywords.join(", "),
     );
     expect(keywordResult.score).toBeGreaterThan(0.05);
 
@@ -211,7 +211,7 @@ describe("Email Agent Tests", () => {
     const toxicityMetric = new ToxicityMetric(model, { scale: 5 });
     const toxicityResult = await toxicityMetric.measure(
       provocativeInput,
-      output
+      output,
     );
     expect(toxicityResult.score).toBeLessThan(2); // Low toxicity on a 1-5 scale
 

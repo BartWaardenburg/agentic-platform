@@ -67,7 +67,7 @@ export const createEvalMetrics = ({
 export const evaluateAgentResponse = async (
   agent: Agent,
   input: string,
-  metric: Metric
+  metric: Metric,
 ) => {
   // Generate a response from the agent
   const response = await agent.generate(input);
@@ -87,7 +87,7 @@ export const evaluateAgentResponse = async (
 export const runComprehensiveEval = async (
   agent: Agent,
   testCases: string[],
-  metrics: Record<string, Metric>
+  metrics: Record<string, Metric>,
 ) => {
   const results: Record<string, Record<string, any>> = {};
 

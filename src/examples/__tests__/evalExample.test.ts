@@ -22,7 +22,7 @@ describe("Eval Example Tests", () => {
   beforeAll(() => {
     if (!hasRequiredEnvVars) {
       console.warn(
-        "Skipping tests: Required environment variables are not set."
+        "Skipping tests: Required environment variables are not set.",
       );
     }
   });
@@ -41,7 +41,7 @@ describe("Eval Example Tests", () => {
       // Validate the result
       expect(result.score).toBeGreaterThanOrEqual(0);
     },
-    10000 // 10 second timeout
+    10000, // 10 second timeout
   );
 
   (hasRequiredEnvVars ? test : test.skip)(
@@ -59,6 +59,6 @@ describe("Eval Example Tests", () => {
       expect(result.score).toBeGreaterThanOrEqual(0.5);
       expect(result.info).toBeDefined();
     },
-    15000 // 15 second timeout
+    15000, // 15 second timeout
   );
 });
