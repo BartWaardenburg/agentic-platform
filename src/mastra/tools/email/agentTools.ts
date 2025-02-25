@@ -30,7 +30,7 @@ export const composeMessageTool = createTool({
 
     try {
       const result = await messageComposerAgent.generate(
-        `Create an email message about: ${context.subject}. Use a ${context.tone || "professional"} tone.`
+        `Create an email message about: ${context.subject}. Use a ${context.tone || "professional"} tone.`,
       );
       console.log("✅ [ComposeMessage] Successfully composed message");
       return { content: result.text };
@@ -71,7 +71,7 @@ export const createTemplateTool = createTool({
       })
       .optional()
       .describe(
-        "Optional style configuration - if not provided, agent will create a creative style"
+        "Optional style configuration - if not provided, agent will create a creative style",
       ),
     template: z
       .object({
@@ -177,7 +177,7 @@ export const sendEmailTool = createTool({
         `Send this email:
         To: ${context.to}
         Subject: ${context.subject}
-        Content: ${context.html}`
+        Content: ${context.html}`,
       );
       console.log("✅ [SendEmail] Email agent response received");
 
@@ -185,7 +185,7 @@ export const sendEmailTool = createTool({
       console.log(
         success
           ? "✅ [SendEmail] Email sent successfully"
-          : "❌ [SendEmail] Failed to send email"
+          : "❌ [SendEmail] Failed to send email",
       );
 
       // Process the response to filter out memory updates
@@ -207,7 +207,7 @@ export const sendEmailTool = createTool({
       // Log memory updates for debugging but don't return to user
       if (result.text.includes("MEMORY_UPDATE")) {
         const memoryUpdatePart = result.text.substring(
-          result.text.indexOf("MEMORY_UPDATE")
+          result.text.indexOf("MEMORY_UPDATE"),
         );
         console.log("📝 [SendEmail] Memory updated:", memoryUpdatePart);
       }

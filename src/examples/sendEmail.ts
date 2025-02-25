@@ -22,14 +22,14 @@ const TIMEOUTS = {
  */
 const processMemoryUpdates = (response: string) => {
   const memoryMatch = response.match(
-    /<working_memory>[\s\S]*?<\/working_memory>/
+    /<working_memory>[\s\S]*?<\/working_memory>/,
   );
   if (memoryMatch) {
     console.log("📝 Memory Update Processed:", {
       preferences: response.match(/<preferences>[\s\S]*?<\/preferences>/)?.[0],
       statistics: response.match(/<statistics>[\s\S]*?<\/statistics>/)?.[0],
       templates: response.match(
-        /<recent_templates>[\s\S]*?<\/recent_templates>/
+        /<recent_templates>[\s\S]*?<\/recent_templates>/,
       )?.[0],
     });
   }
@@ -51,7 +51,9 @@ const createTimeout = (ms: number, operation: string): Promise<never> =>
   new Promise((_, reject) => {
     setTimeout(() => {
       reject(
-        new Error(`${operation} operation timed out after ${ms / 1000} seconds`)
+        new Error(
+          `${operation} operation timed out after ${ms / 1000} seconds`,
+        ),
       );
     }, ms);
   });
@@ -73,7 +75,7 @@ const sendEmail = async () => {
     const composeTimeout = createTimeout(TIMEOUTS.COMPOSE, "Email composition");
     const templateTimeout = createTimeout(
       TIMEOUTS.TEMPLATE,
-      "Template creation"
+      "Template creation",
     );
     const sendTimeout = createTimeout(TIMEOUTS.SEND, "Email sending");
 
@@ -101,7 +103,7 @@ const sendEmail = async () => {
               messageRange: 1,
             },
           },
-        }
+        },
       ),
       totalTimeout,
       composeTimeout,
