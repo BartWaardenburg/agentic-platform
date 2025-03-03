@@ -50,7 +50,7 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
-    "mastra": "^0.2.4",
+    "mastra": "^0.2.8",
     "prettier": "^3.5.2",
     "tsx": "^4.19.3",
     "typescript": "^5.7.3",
